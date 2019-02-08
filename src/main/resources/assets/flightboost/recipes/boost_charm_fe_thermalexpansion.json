@@ -1,0 +1,25 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "thermalexpansion"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "group": "flightboost",
+  "pattern": [
+    " b ",
+    "gCg",
+    "dtd"
+  ],
+  "key": {
+    "C": { "item": "flightboost:boost_charm_basic" },
+    "g": { "ore": "gearSignalum", "type": "forge:ore_dict" },
+    "t": { "item": "thermalfoundation:material", "data": 640 },
+    "b": { "item": "thermalexpansion:capacitor", "data": 2 },
+    "d": { "item": "thermalfoundation:material", "data": 1024 }
+  },
+  "result": {
+    "item": "flightboost:boost_charm_powered"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "flightboost",
+  "pattern": [
+    " G ",
+    "RER",
+    " G "
+  ],
+  "key": {
+    "E": { "ore": "gemEmerald", "type": "forge:ore_dict" },
+    "G": { "ore": "gunpowder", "type": "forge:ore_dict" },
+    "R": { "ore": "dustRedstone", "type": "forge:ore_dict" }
+  },
+  "result": {
+    "item": "flightboost:boost_charm_basic"
+  }
+}

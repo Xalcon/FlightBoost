@@ -1,0 +1,25 @@
+{
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "immersiveengineering"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "group": "flightboost",
+  "pattern": [
+    " b ",
+    "gCg",
+    "dtd"
+  ],
+  "key": {
+    "C": { "item": "flightboost:boost_charm_basic" },
+    "g": { "ore": "ingotElectrum", "type": "forge:ore_dict" },
+    "t": { "item": "immersiveengineering:metal_decoration", "data": 4 },
+    "b": { "item": "immersiveengineering:metal_device0", "data": 1 },
+    "d": { "item": "immersiveengineering:metal_decoration", "data": 1 }
+  },
+  "result": {
+    "item": "flightboost:boost_charm_powered"
+  }
+}
