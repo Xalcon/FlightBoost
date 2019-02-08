@@ -1,6 +1,5 @@
 package net.xalcon.flightboost.common.items;
 
-import io.netty.util.internal.MathUtil;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.enchantment.Enchantment;
@@ -25,7 +24,7 @@ import net.xalcon.flightboost.common.utils.ReflectionUtils;
 
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Mod.EventBusSubscriber(modid = FlightBoost.MODID)
 public class ItemBoostCharmBasic extends ItemBoostCharm
@@ -132,28 +131,36 @@ public class ItemBoostCharmBasic extends ItemBoostCharm
         Entity exploder = ReflectionUtils.getExplosionExploder(event.getExplosion());
         if(exploder instanceof EntityItem && ((EntityItem) exploder).getItem().getItem() == ModItems.boostCharmBasic)
             return;
-        
-        event.getAffectedEntities().stream()
+
+        List<EntityItem> entities = event.getAffectedEntities().stream()
             .filter(e -> e instanceof EntityItem && ((EntityItem) e).getItem().getItem() == ModItems.boostCharmBasic)
             .map(e -> (EntityItem)e)
-            .findFirst()
-            .ifPresent(itemEntity ->
-            {
-                event.getAffectedBlocks().clear();
-                event.getAffectedEntities().clear();
-                ItemStack itemStack = itemEntity.getItem();
-                Explosion explosion = event.getExplosion();
-                float size = ReflectionUtils.getExplosionSize(explosion);
-                ModItems.boostCharmBasic.chargeFromExplosion(itemStack, Math.min(size, FlightBoostConfig.BasicBoostCharmMaximumExplosionAbsorbtion));
+            .collect(Collectors.toList());
 
-                if(size > FlightBoostConfig.BasicBoostCharmMaximumExplosionAbsorbtion)
-                {
-                    final float delta = (float) (size - FlightBoostConfig.BasicBoostCharmMaximumExplosionAbsorbtion);
-                    FMLCommonHandler.instance().getMinecraftServerInstance().addScheduledTask(() ->
-                    {
-                        itemEntity.world.createExplosion(itemEntity, itemEntity.posX, itemEntity.posY, itemEntity.posZ, delta, true);
-                    });
-                }
+        if(entities.isEmpty()) return;
+
+        Explosion explosion = event.getExplosion();
+        float size = ReflectionUtils.getExplosionSize(explosion);
+        float sizePerCharm = (float) Math.min(size / entities.size(), FlightBoostConfig.BasicBoostCharmMaximumExplosionAbsorbtion);
+
+        entities.forEach(itemEntity ->
+        {
+            event.getAffectedBlocks().clear();
+            event.getAffectedEntities().clear();
+            ItemStack itemStack = itemEntity.getItem();
+
+            ModItems.boostCharmBasic.chargeFromExplosion(itemStack, sizePerCharm);
+        });
+
+        float maxAbsorb = (float) (FlightBoostConfig.BasicBoostCharmMaximumExplosionAbsorbtion * entities.size());
+        if(size > maxAbsorb)
+        {
+            final float delta = size - maxAbsorb;
+            final Entity e = entities.get(0);
+            FMLCommonHandler.instance().getMinecraftServerInstance().addScheduledTask(() ->
+            {
+                e.world.createExplosion(e, e.posX, e.posY, e.posZ, delta, true);
             });
+        }
     }
 }
