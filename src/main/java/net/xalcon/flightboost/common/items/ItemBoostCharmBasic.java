@@ -129,6 +129,10 @@ public class ItemBoostCharmBasic extends ItemBoostCharm
     @SubscribeEvent
     public static void onExplosion(ExplosionEvent.Detonate event)
     {
+        Entity exploder = ReflectionUtils.getExplosionExploder(event.getExplosion());
+        if(exploder instanceof EntityItem && ((EntityItem) exploder).getItem().getItem() == ModItems.boostCharmBasic)
+            return;
+        
         event.getAffectedEntities().stream()
             .filter(e -> e instanceof EntityItem && ((EntityItem) e).getItem().getItem() == ModItems.boostCharmBasic)
             .map(e -> (EntityItem)e)
