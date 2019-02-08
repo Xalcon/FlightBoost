@@ -56,7 +56,7 @@ public class FlightBoostConfig
     public static int PoweredBoostCharmMaxEnergy = 25000;
 
     @Config.RangeInt(min = 0)
-    @Config.Comment("maximum amount of energy the powered charm can store")
+    @Config.Comment("Amount of energy the charm will use for a boost (before enchantments)")
     public static int PoweredBoostCharmEnergyPerBoost = 250;
 
     @SubscribeEvent
