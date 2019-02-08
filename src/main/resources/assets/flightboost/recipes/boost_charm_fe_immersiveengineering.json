@@ -15,9 +15,9 @@
   "key": {
     "C": { "item": "flightboost:boost_charm_basic" },
     "g": { "ore": "ingotElectrum", "type": "forge:ore_dict" },
-    "t": { "item": "immersiveengineering:metal_decoration", "data": 4 },
+    "t": { "item": "immersiveengineering:metal_decoration0", "data": 4 },
     "b": { "item": "immersiveengineering:metal_device0", "data": 1 },
-    "d": { "item": "immersiveengineering:metal_decoration", "data": 1 }
+    "d": { "item": "immersiveengineering:metal_decoration0", "data": 1 }
   },
   "result": {
     "item": "flightboost:boost_charm_powered"
