@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "C": {
+      "item": "flightboost:infinity_boost_charm"
+    },
+    "r": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "pattern": [
+    " r ",
+    "rCr",
+    " r "
+  ],
+  "result": {
+    "item": "flightboost:energetic_boost_charm"
+  }
+}

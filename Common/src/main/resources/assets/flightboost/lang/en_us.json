@@ -1,0 +1,10 @@
+{
+  "enchantment.flightboost.flight_duration": "Flight Duration",
+  "enchantment.flightboost.flight_duration.desc": "Increases boosting duration",
+  "enchantment.flightboost.cool_down_reduction": "Cooldown Reduction",
+  "enchantment.flightboost.cool_down_reduction.desc": "Reduces total cooldown of the boost charm",
+  "item.flightboost.infinity_boost_charm": "Infinity Boost Charm",
+  "item.flightboost.charged_boost_charm": "Charged Boost Charm",
+  "item.flightboost.charged_boost_charm.tooltip": "Charge: %s",
+  "item.flightboost.energetic_boost_charm": "Energetic Boost Charm"
+}

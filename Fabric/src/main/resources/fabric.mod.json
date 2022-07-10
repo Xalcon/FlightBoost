@@ -1,0 +1,43 @@
+{
+    "schemaVersion": 1,
+    "id": "flightboost",
+    "version": "${version}",
+  
+    "name": "FlightBoost",
+    "description": "",
+    "authors": [
+      "Xalcon"
+    ],
+    "contact": {
+      "homepage": "https://fabricmc.net/",
+      "sources": "https://github.com/FabricMC/fabric-example-mod"
+    },
+  
+    "license": "ARR",
+    "icon": "assets/flightboost/icon.png",
+  
+    "environment": "*",
+    "entrypoints": {
+      "main": [
+        "net.xalcon.flightboost.FlightBoostFabric"
+      ],
+      "mm:early_risers": [
+        "net.xalcon.flightboost.FabricEarlyRiser"
+      ]
+    },
+    "mixins": [
+      "flightboost.mixins.json"
+    ],
+  "accessWidener": "flightboost.accesswidener",
+  "depends": {
+      "fabricloader": ">=0.13",
+      "fabric": "*",
+      "minecraft": "1.19.x",
+      "java": ">=17",
+      "mm": ">=2.3"
+    },
+    "suggests": {
+      "another-mod": "*"
+    }
+  }
+  

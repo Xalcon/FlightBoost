@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "E": {
+      "item": "minecraft:emerald"
+    },
+    "g": {
+      "tag": "forge:glass"
+    },
+    "r": {
+      "item": "minecraft:firework_rocket"
+    }
+  },
+  "pattern": [
+    "grg",
+    "rEr",
+    "grg"
+  ],
+  "result": {
+    "item": "flightboost:charged_boost_charm"
+  }
+}
